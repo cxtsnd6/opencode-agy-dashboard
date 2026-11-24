@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugins": [
+    {
+      "package": "/absolute/path/to/opencode-agy-dashboard",
+      "options": {
+        "proxyURL": "http://127.0.0.1:7861",
+        "panelPasswordFile": "~/.config/opencode/agy-panel.key"
+      }
+    }
+  ],
+  "model": "antigravity/gemini-4-hydrogen-xhigh",
+  "providers": {
+    "antigravity": {
+      "name": "Antigravity (local AGY2API)",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:7861/v1",
+        "apiKey": "{file:~/.config/opencode/agy-api.key}"
+      },
+      "models": {
+        "gemini-4-hydrogen-xhigh": {
+          "name": "Hydrogen Extra",
+          "limit": { "context": 200000, "output": 32768 },
+          "capabilities": { "tools": true, "input": ["text", "image"], "output": ["text"] }
+        }
+      }
+    }
+  }
+}
